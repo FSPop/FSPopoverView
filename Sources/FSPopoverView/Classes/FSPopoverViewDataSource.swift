@@ -19,6 +19,8 @@ public protocol FSPopoverViewDataSource: AnyObject {
     func containerSafeAreaInsets(for popoverView: FSPopoverView) -> UIEdgeInsets
     
     func popoverViewShouldDismissOnTapOutside(_ popoverView: FSPopoverView) -> Bool
+    
+    func popoverViewShouldPassthroughViews(_ popoverView: FSPopoverView) -> [UIView]?
 }
 
 /// Optional
@@ -44,5 +46,9 @@ public extension FSPopoverViewDataSource {
     
     func popoverViewShouldDismissOnTapOutside(_ popoverView: FSPopoverView) -> Bool {
         return true
+    }
+    
+    func popoverViewShouldPassthroughViews(_ popoverView: FSPopoverView) -> [UIView]? {
+        return nil
     }
 }

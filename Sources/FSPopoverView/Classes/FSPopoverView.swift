@@ -887,7 +887,10 @@ private extension FSPopoverView {
             return rect
         }()
         
-        let containerView = p_createContainerView()
+        var containerView = p_createContainerView()
+        if let passthroughViews = dataSource?.popoverViewShouldPassthroughViews(self) {
+            containerView = _FSPopoverPassthroughContainerView(passthroughViews: passthroughViews)
+        }
         do {
             p_setContainerView(containerView)
             displayView.addSubview(containerView)
